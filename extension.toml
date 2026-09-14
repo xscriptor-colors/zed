@@ -1,0 +1,7 @@
+id = "xscriptor-theme"
+name = "Xscriptor Themes"
+version = "0.1.0"
+schema_version = 1
+authors = ["Xscriptor"]
+description = "Twelve Xscriptor color palettes for Zed: X, Madrid, Lahabana, Miami, Paris, Tokio, Oslo, Helsinki, Berlin, London, Praha and Bogota."
+repository = "https://github.com/xscriptor-colors/zed"
