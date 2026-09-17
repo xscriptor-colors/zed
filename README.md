@@ -60,12 +60,13 @@ python3 generate.py
 The themes target the current Zed theme schema (`https://zed.dev/schema/themes/v0.2.0.json`, one theme family per file):
 
 - Legacy CSS-style colors (`rgba(...)`) were converted to Zed's hex formats (`#rrggbb`, `#rrggbbaa`).
-- Terminal colors use the flat `terminal.ansi.*` keys.
+- Terminal colors use the flat `terminal.ansi.*` keys, with `terminal.ansi.dim_*` derived by dimming the base ANSI colors and `terminal.bright_foreground`/`terminal.dim_foreground` taken from the palette.
 - The cursor and selection colors are mapped to the first entry of `players`.
 - Diagnostics colors (`editor.diagnostics.*`) are mapped to the current `error`, `warning`, `info` and `hint` roles.
 - Syntax entries are objects (`{"color": ...}`); bold is `700`; `underline` emphasis is not supported by the schema, so only its color is kept.
+- Syntax covers Zed's canonical captures (`number`, `boolean`, `property`, `attribute`, `enum`, `variant`, `title`, `link_text`, `link_uri`, `selector`, `preproc`, `string.escape`, `string.special.symbol`, `diff.*`, ...) plus common legacy names; any color below 3:1 contrast against the background is nudged toward the foreground.
 - The accent color drives `text.accent`, `icon.accent` and the `accents` array.
-- UI roles that the palettes do not define (panels, tabs, elements, etc.) fall back to Zed's defaults.
+- UI surfaces (panels, tabs, title/status bars, elements, borders, scrollbars, search matches, status colors, version-control colors) are derived from `background`/`foreground` through blends and alpha, so the whole UI stays in the palette instead of falling back to Zed's defaults.
 
 ## Publishing
 
